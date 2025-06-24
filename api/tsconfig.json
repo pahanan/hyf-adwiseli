@@ -1,0 +1,51 @@
+{
+	"ts-node": {
+		"require": ["tsconfig-paths/register"]
+	},
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"lib": ["esnext"],
+		"allowJs": true,
+		"outDir": "dist",
+		"rootDir": "src",
+		"sourceMap": true,
+		"baseUrl": "./src",
+
+		"paths": {
+			"@/routes/*": ["routes/*"],
+			"@/controllers/*": ["controllers/*"],
+			"@/constants/*": ["constants/*"],
+			"@/middlewares/*": ["middlewares/*"],
+			"@/utils/*": ["utils/*"],
+			"@/helpers/*": ["helpers/*"],
+			"@/queues/*": ["queues/*"],
+		},
+
+		"noImplicitAny": true,
+		"esModuleInterop": true,
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"noFallthroughCasesInSwitch": true,
+		"alwaysStrict": true,
+		"noImplicitReturns": false,
+		"noImplicitThis": true,
+		"strictNullChecks": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"noEmit": false,
+
+		"typeRoots": ["./node_module/@types", "./src/types"],
+
+		"skipLibCheck": true,
+		"inlineSources": true,
+
+		// Set `sourceRoot` to  "/" to strip the build path prefix
+		// from generated source code references.
+		// This improves issue grouping in Sentry.
+		"sourceRoot": "/"
+	},
+	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/routes"],
+	"exclude": ["node_modules/*"]
+}

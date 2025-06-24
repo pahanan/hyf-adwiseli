@@ -1,0 +1,6 @@
+model Interest {
+    id   Int    @id @default(autoincrement())
+    name String @unique
+
+    createdAt DateTime @default(now())
+}

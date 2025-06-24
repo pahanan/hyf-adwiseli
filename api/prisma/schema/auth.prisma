@@ -1,0 +1,70 @@
+enum AdwiseliPlatform {
+    INFLUENCER
+    BRAND
+}
+
+model User {
+    id String @id @default(cuid())
+
+    firstName String
+    lastName  String
+
+    email    String @unique
+    password String
+
+    sessions   Session[]
+    brandUsers BrandUser[]
+
+    createdAt DateTime @default(now())
+}
+
+model Influencer {
+    id String @id @default(cuid())
+
+    email    String @unique
+    password String
+
+    fullName String?
+
+    country   String?
+    gender    String?
+    birthday  DateTime?
+    interests Int[]
+
+    lastActiveAt DateTime?
+    createdAt    DateTime  @default(now())
+
+    onboarded Boolean @default(false)
+
+    fake Boolean @default(false)
+
+    socialAccounts     SocialAccount[]
+    sessions           Session[]
+    conversations      Conversation[]
+    messages           Message[]
+    matchmakingResults CampaignCreatorMatchmakingResult[]
+    notifications      Notification[]
+
+    @@index([id])
+    @@index([fullName])
+    @@index([id, fullName, gender])
+}
+
+model Session {
+    id String @id @default(uuid())
+
+    userId       String?
+    user         User?       @relation(fields: [userId], references: [id])
+    influencerId String?
+    influencer   Influencer? @relation(fields: [influencerId], references: [id])
+
+    accessToken  String @unique
+    refreshToken String @unique
+
+    expiresAt             DateTime
+    refreshTokenExpiresAt DateTime
+
+    createdAt DateTime @default(now())
+
+    @@index([userId])
+}

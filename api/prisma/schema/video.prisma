@@ -1,0 +1,45 @@
+model InfluencerVideo {
+    id              String            @id @default(cuid())
+    postId          String // item_id
+    platform        SocialAccountType
+    socialAccount   SocialAccount     @relation(fields: [socialAccountId], references: [id], onDelete: Cascade)
+    socialAccountId String
+
+    // TikTok
+    caption                 String? @db.Text
+    shares                  Int     @default(0)
+    saves                   Int     @default(0)
+    share_url               String? @db.Text
+    audience_countries      String? @db.Text // JSON 
+    impression_sources      String? @db.Text // JSON
+    full_video_watched_rate Float   @default(0)
+    total_time_watched      Float   @default(0)
+    embed_url               String? @db.Text
+    reach                   Int     @default(0)
+    video_duration          Float   @default(0)
+    thumbnail_url           String? @db.Text // Temporary TikTok Thumbnail
+    likes                   Int     @default(0)
+    average_time_watched    Float   @default(0)
+    video_views             Int     @default(0)
+    comments                Int     @default(0)
+
+    thumbnailId       String?
+    thumbnailProvider StorageProvider?
+    videoId           String?
+    videoProvider     StorageProvider?
+
+    downloaded     Boolean @default(false)
+    downloadFailed Boolean @default(false)
+    isAdVideo      Boolean
+
+    createdAt DateTime
+
+    @@unique([postId, platform])
+    @@index([socialAccountId, isAdVideo, createdAt])
+    @@index([socialAccountId])
+    @@index([isAdVideo])
+    @@index([video_views])
+    @@index([socialAccountId, downloaded]) // New index for efficient video querying
+    @@index([socialAccountId, downloaded, video_views])
+    @@index([downloaded, video_views(sort: Desc)])
+}

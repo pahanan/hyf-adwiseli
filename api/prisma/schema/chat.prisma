@@ -1,0 +1,58 @@
+enum MessageSender {
+    INFLUENCER
+    BRAND
+}
+
+enum MessageType {
+    TEXT
+}
+
+model Conversation {
+    id           String         @id @unique @default(cuid())
+    influencerId String
+    influencer   Influencer     @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+    brandId      String
+    brand        Brand          @relation(fields: [brandId], references: [id], onDelete: Cascade)
+    campaignId   String?
+    campaign     Campaign?      @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+    offerId      String?
+    offer        CampaignOffer? @relation(fields: [offerId], references: [id], onDelete: Cascade)
+
+    messages Message[]
+
+    deleted   Boolean   @default(false)
+    deletedAt DateTime?
+    createdAt DateTime  @default(now())
+
+    @@index([influencerId])
+    @@index([brandId])
+}
+
+model Message {
+    id String @id @unique @default(cuid())
+
+    conversation   Conversation? @relation(fields: [conversationId], references: [id])
+    conversationId String?
+
+    influencerId String
+    influencer   Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+    brandId      String
+    brand        Brand      @relation(fields: [brandId], references: [id], onDelete: Cascade)
+
+    sender MessageSender
+    type   MessageType
+
+    message      String?      @db.Text
+    attachmentId String?      @unique
+    attachment   StorageFile? @relation(fields: [attachmentId], references: [id])
+
+    read   Boolean   @default(false)
+    readAt DateTime?
+
+    deleted   Boolean   @default(false)
+    deletedAt DateTime?
+    createdAt DateTime  @default(now())
+
+    @@index([influencerId])
+    @@index([brandId])
+}

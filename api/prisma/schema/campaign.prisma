@@ -1,0 +1,81 @@
+enum CampaignGoal {
+    AWARENESS
+    PROMOTION
+    SALES
+    TRAFFIC
+}
+
+enum CampaignContentType {
+    INFLUENCER
+    UGC
+}
+
+enum CampaignStatus {
+    GENERATING
+    PENDING
+    ACTIVE
+    CANCELLED
+}
+
+model Campaign {
+    id      String @id @default(cuid())
+    brandId String
+    brand   Brand  @relation(fields: [brandId], references: [id])
+    name    String
+
+    status CampaignStatus
+
+    conversations Conversation[]
+
+    goal                       CampaignGoal
+    contentType                CampaignContentType
+    creatorAmount              Int
+    creatorAgeRange            Int[]
+    audienceCountries          String[]
+    creatorInterests           Int[]
+    audienceAgeDistribution    Json
+    audienceGenderDistribution Json
+    minimumFollowers           Int                 @default(0)
+
+    createdAt      DateTime                           @default(now())
+    offers         CampaignOffer[]
+    creatorResults CampaignCreatorMatchmakingResult[]
+}
+
+enum CampaignOfferStatus {
+    PENDING
+    ACCEPTED
+    REJECTED
+}
+
+model CampaignOffer {
+    id         String   @id @default(cuid())
+    campaignId String
+    campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+    conversation Conversation[]
+
+    status         CampaignOfferStatus                @default(PENDING)
+    creatorResults CampaignCreatorMatchmakingResult[]
+}
+
+model CampaignCreatorMatchmakingResult {
+    id         String        @id @default(cuid())
+    campaignId String
+    campaign   Campaign      @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+    offerId    String
+    offer      CampaignOffer @relation(fields: [offerId], references: [id], onDelete: Cascade)
+
+    influencerId String
+    influencer   Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+
+    overallScore            Float
+    interestScore           Float
+    influencerAgeScore      Float
+    audienceAgeScore        Float
+    audienceCountriesScore  Float
+    audienceGenderScore     Float
+    performanceMetricsScore Float
+
+    createdAt DateTime @default(now())
+}

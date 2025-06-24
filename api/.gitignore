@@ -1,0 +1,9 @@
+logs
+node_modules
+.env*
+.env
+logs
+tmp
+dist
+# Sentry Config File
+.sentryclirc

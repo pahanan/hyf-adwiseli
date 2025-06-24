@@ -1,0 +1,71 @@
+enum SocialAccountType {
+    TIKTOK
+}
+
+model SocialAccount {
+    id     String            @id @default(cuid())
+    type   SocialAccountType @default(TIKTOK)
+    active Boolean           @default(false) // Set to false when refresh token is expired or not valid
+
+    influencer   Influencer? @relation(fields: [influencerId], references: [id], onDelete: SetNull)
+    influencerId String?
+
+    socialId String
+
+    refreshToken          String?   @db.Text
+    refreshTokenExpiresAt DateTime?
+    accessToken           String?   @db.Text
+    accessTokenExpiresAt  DateTime?
+
+    lastInsightsFetchAt DateTime?
+    lastOAuthRefreshAt  DateTime?
+
+    fullName               String?
+    username               String
+    profilePictureId       String?
+    profilePictureProvider StorageProvider?
+
+    bio String? @db.Text
+
+    followers      Int?
+    engagementRate Float?
+    averageViews   Float?
+    medianViews    Float?
+
+    createdAt DateTime @default(now())
+
+    // TIKTOK ONLY
+    audienceCountry1               String?
+    audienceCountry1Percentage     Float?
+    audienceCountry2               String?
+    audienceCountry2Percentage     Float?
+    audienceCountry3               String?
+    audienceCountry3Percentage     Float?
+    audienceCountryOtherPercentage Float?
+
+    audienceMalePercentage   Float?
+    audienceFemalePercentage Float?
+    audienceOtherPercentage  Float?
+
+    audience18Percentage Float?
+    audience25Percentage Float?
+    audience35Percentage Float?
+    audience45Percentage Float?
+    audience55Percentage Float?
+
+    influencerVideos InfluencerVideo[]
+
+    @@unique([type, socialId])
+    @@index([type])
+    @@index([active])
+    @@index([socialId])
+    @@index([followers])
+    @@index([engagementRate])
+    @@index([averageViews])
+    @@index([medianViews])
+    @@index([influencerId, type, active])
+    @@index([type, username])
+    @@index([influencerId, type, followers])
+    @@index([influencerId, type, engagementRate])
+    @@index([influencerId, type, medianViews])
+}

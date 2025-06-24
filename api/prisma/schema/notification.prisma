@@ -1,0 +1,14 @@
+model Notification {
+    id String @id @default(cuid())
+
+    influencerId String
+    influencer   Influencer @relation(fields: [influencerId], references: [id])
+
+    message String
+    url     String?
+
+    iconId       String?
+    iconProvider StorageProvider?
+
+    createdAt DateTime @default(now())
+}

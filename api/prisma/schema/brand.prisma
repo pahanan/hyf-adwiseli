@@ -1,0 +1,34 @@
+model Brand {
+    id   String @id @unique @default(cuid())
+    name String
+
+    iconId       String?
+    iconProvider StorageProvider?
+
+    messages      Message[]
+    conversations Conversation[]
+
+    createdAt  DateTime    @default(now())
+    brandUsers BrandUser[]
+    campaigns  Campaign[]
+}
+
+enum BrandRole {
+    OWNER
+    ADMIN
+}
+
+model BrandUser {
+    id      Int       @id @default(autoincrement())
+    brandId String
+    brand   Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
+    userId  String
+    user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    role    BrandRole
+
+    createdAt DateTime @default(now())
+
+    @@unique([brandId, userId])
+    @@index([brandId])
+    @@index([userId])
+}

@@ -1,0 +1,26 @@
+enum MediaType {
+    IMAGE
+    VIDEO
+    FILE
+}
+
+enum StorageProvider {
+    R2
+    S3
+}
+
+model StorageFile {
+    id String @id @default(cuid())
+
+    influencerId String?
+    brandId      String?
+    userId       String?
+
+    type      MediaType
+    mimeType  String
+    bytes     BigInt
+    provider  StorageProvider @default(R2)
+    createdAt DateTime        @default(now())
+
+    message Message?
+}
