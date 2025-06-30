@@ -7,7 +7,15 @@
 	"scripts": {
 		"start": "node -r ./dist/alias.js dist/server.js",
 		"dev": "nodemon src/server.ts",
-		"build": "prisma generate && tsc"
+		"build": "prisma generate && tsc",
+		"db:start": "node scripts/start.js",
+		"db:stop": "node scripts/stop.js",
+		"db:reset": "node scripts/reset.js",
+		"db:init": "node scripts/init.js",
+		"db:logs": "node scripts/logs.js",
+		"db:status": "docker-compose ps",
+		"db:seed": "docker exec -i hyf-adwi-postgres psql -U root -d hyf-adwiseli-db -f /docker-entrypoint-initdb.d/10_data.sql",
+		"setup": "node scripts/setup.js"
 	},
 	"author": "",
 	"license": "ISC",
