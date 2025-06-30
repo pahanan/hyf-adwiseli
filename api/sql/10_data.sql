@@ -119,3 +119,32 @@ INSERT INTO "Session" ("id", "userId", "influencerId", "accessToken", "refreshTo
 -- Reset sequences for auto-incrementing columns
 SELECT setval('"Interest_id_seq"', (SELECT MAX("id") FROM "Interest"));
 SELECT setval('"BrandUser_id_seq"', (SELECT MAX("id") FROM "BrandUser")); 
+
+-- 16. 
+-- Mock data for BrandProfileClick
+INSERT INTO "BrandProfileClick" ("brandId", "clicks", "createdAt") VALUES
+('brand-001', 1150, NOW() - INTERVAL '5 days'),
+('brand-002', 980, NOW() - INTERVAL '10 days'),
+('brand-003', 1340, NOW() - INTERVAL '3 days');
+
+-- Mock data for Earnings (influencer)
+INSERT INTO "Earnings" ("influencerId", "amount", "currency", "createdAt") VALUES
+('inf-001', 1545, 'DKK', NOW() - INTERVAL '7 days'),
+('inf-002', 1120, 'DKK', NOW() - INTERVAL '10 days'),
+('inf-003', 980, 'DKK', NOW() - INTERVAL '2 days');
+
+-- Mock data for CampaignVideo
+INSERT INTO "CampaignVideo" ("campaignId", "videoId", "createdAt") VALUES
+('camp-001', 'video-001', NOW() - INTERVAL '5 days'),
+('camp-001', 'video-002', NOW() - INTERVAL '4 days'),
+('camp-002', 'video-003', NOW() - INTERVAL '3 days');
+
+-- Mock data for PerformanceMetric (for graph)
+INSERT INTO "PerformanceMetric" ("brandId", "metricType", "value", "recordedAt") VALUES
+('brand-001', 'views', 87000, NOW() - INTERVAL '5 days'),
+('brand-001', 'likes', 89000, NOW() - INTERVAL '5 days'),
+('brand-001', 'shares', 578, NOW() - INTERVAL '5 days'),
+('brand-001', 'comments', 1412, NOW() - INTERVAL '5 days'),
+('brand-002', 'views', 123452, NOW() - INTERVAL '3 days'),
+('brand-002', 'likes', 21569, NOW() - INTERVAL '3 days'),
+('brand-002', 'shares', 578, NOW() - INTERVAL '3 days');
