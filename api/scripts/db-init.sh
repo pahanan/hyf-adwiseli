@@ -13,11 +13,13 @@ for file in \
   6_other_postgres_schema.sql \
   7_social_accounts_postgres_schema.sql \
   8_chat_postgres_schema.sql \
-  9_video_postgres_schema.sql
+  9_video_postgres_schema.sql \
+  11_dashboard_postgres_schema.sql
 
 do
   echo "Running $file..."
   docker exec -i hyf-adwi-postgres psql -U root -d hyf-adwiseli-db -f /docker-entrypoint-initdb.d/$file
+
   if [ $? -ne 0 ]; then
     echo "❌ Error running $file"
     exit 1
