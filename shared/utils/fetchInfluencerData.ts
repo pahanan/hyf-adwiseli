@@ -28,7 +28,7 @@ export async function fetchInfluencerData(
 ): Promise<InfluencerData> {
 	try {
 		const res = await fetch(
-			`http://localhost:8080/influencer/${influencerId}`,
+			`http://localhost:8080/influencer/dashboard/${influencerId}`,
 			{
 				method: 'GET',
 				headers: {
