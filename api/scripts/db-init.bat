@@ -11,5 +11,6 @@ docker exec -i hyf-adwi-postgres psql -U root -d hyf-adwiseli-db -f /docker-entr
 docker exec -i hyf-adwi-postgres psql -U root -d hyf-adwiseli-db -f /docker-entrypoint-initdb.d/7_social_accounts_postgres_schema.sql
 docker exec -i hyf-adwi-postgres psql -U root -d hyf-adwiseli-db -f /docker-entrypoint-initdb.d/8_chat_postgres_schema.sql
 docker exec -i hyf-adwi-postgres psql -U root -d hyf-adwiseli-db -f /docker-entrypoint-initdb.d/9_video_postgres_schema.sql
+docker exec -i hyf-adwi-postgres psql -U root -d hyf-adwiseli-db -f /docker-entrypoint-initdb.d/11_dashboard_postgres_schema.sql
 
 echo ✅ Schema initialization completed! 
