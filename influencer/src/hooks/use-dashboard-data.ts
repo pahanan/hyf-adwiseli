@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react'
 import fetchInfluencerData from '../queries/influencer/fetchInfluencerData'
 
+//Defines the shape of a dashboard card
 interface DashboardCardData {
 	label: string
 	value: number | string
 	extraInfo?: string
 }
 
+// Format function to make the first letter Uppercase
+function formatString(str: string) {
+	str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+// Custom hook to load and structure dashboard data for influencer users
 const useDashboardData = (influencerId: string) => {
 	const [cards, setCards] = useState<DashboardCardData[]>([])
 	const [loading, setLoading] = useState(true)
@@ -17,6 +24,7 @@ const useDashboardData = (influencerId: string) => {
 			try {
 				const data = await fetchInfluencerData(influencerId)
 
+				// Format the fetched data into a card-friendly array
 				const topGender = Object.entries(data.audienceGender).reduce(
 					(prev, curr) => (curr[1] > prev[1] ? curr : prev),
 					Object.entries(data.audienceGender)[0]
@@ -28,11 +36,6 @@ const useDashboardData = (influencerId: string) => {
 				)[0]
 
 				const topCountry = data.audienceCountry[0]?.country ?? 'Unknown'
-
-				const format = (str: string) =>
-					str.charAt(0).toUpperCase() +
-					str.slice(1).toLowerCase() +
-					str.slice(1).toLowerCase()
 
 				setCards([
 					{ label: 'Views', value: data.views },
@@ -47,7 +50,9 @@ const useDashboardData = (influencerId: string) => {
 					},
 					{
 						label: 'Audience (age, gender, country)',
-						value: `${topAge}, ${format(topGender)}, ${topCountry}`,
+						value: `${topAge}, ${formatString(
+							topGender
+						)}, ${topCountry}`,
 					},
 					{
 						label: 'Top performing campaign',
@@ -63,6 +68,7 @@ const useDashboardData = (influencerId: string) => {
 		loadData()
 	}, [influencerId])
 
+	// Return card data, loading state and error
 	return { cards, loading, error }
 }
 
