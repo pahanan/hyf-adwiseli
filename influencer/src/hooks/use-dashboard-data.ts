@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-//import { fetchInfluencerData } from '../queries/influencer/fetchInfluencerData'
+import fetchInfluencerData from '../queries/influencer/fetchInfluencerData'
 
 interface DashboardCardData {
 	label: string
@@ -15,18 +15,24 @@ const useDashboardData = (influencerId: string) => {
 	useEffect(() => {
 		const loadData = async () => {
 			try {
-				/*const data = await fetchInfluencerData(influencerId)
+				const data = await fetchInfluencerData(influencerId)
 
 				const topGender = Object.entries(data.audienceGender).reduce(
-				(prev, curr) => (curr[1] > prev[1] ? curr : prev),
-				Object.entries(data.audienceGender)[0]
+					(prev, curr) => (curr[1] > prev[1] ? curr : prev),
+					Object.entries(data.audienceGender)[0]
 				)[0]
 
-				const topAge = Object.entries(data.audienceAge).reduce((prev, curr) => (curr[1] > prev[1] ? curr : prev),Object.entries(data.audienceAge)[0])[0]
+				const topAge = Object.entries(data.audienceAge).reduce(
+					(prev, curr) => (curr[1] > prev[1] ? curr : prev),
+					Object.entries(data.audienceAge)[0]
+				)[0]
 
 				const topCountry = data.audienceCountry[0]?.country ?? 'Unknown'
 
-				const format = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() + str.slice(1).toLowerCase()
+				const format = (str: string) =>
+					str.charAt(0).toUpperCase() +
+					str.slice(1).toLowerCase() +
+					str.slice(1).toLowerCase()
 
 				setCards([
 					{ label: 'Views', value: data.views },
@@ -41,11 +47,13 @@ const useDashboardData = (influencerId: string) => {
 					},
 					{
 						label: 'Audience (age, gender, country)',
-						value: `${topAge}, ${format(topGender)}, ${data.audienceCountry}`,
+						value: `${topAge}, ${format(topGender)}, ${topCountry}`,
 					},
-					{label: 'Top performing campaign',
-					value: data.topPerformingBrand || 'N/A',}
-				])*/
+					{
+						label: 'Top performing campaign',
+						value: data.topPerformingBrand || 'N/A',
+					},
+				])
 			} catch (err) {
 				setError('Failed to load influencer data')
 			} finally {
