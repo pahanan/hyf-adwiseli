@@ -57,6 +57,27 @@ export default createRouter((router) => {
 						.status(404)
 						.json({ error: 'Influencer not found' })
 				}
+
+				const topBrandResult =
+					await db.campaignCreatorMatchmakingResult.findFirst({
+						where: { influencerId },
+						orderBy: { overallScore: 'desc' },
+						select: {
+							campaign: {
+								select: {
+									brand: {
+										select: {
+											name: true,
+										},
+									},
+								},
+							},
+						},
+					})
+
+				const topBrandName =
+					topBrandResult?.campaign?.brand?.name ?? null
+
 				return res.json({
 					views: influencerData[0]._sum.video_views,
 					likes: influencerData[1]._sum.likes,
@@ -98,6 +119,7 @@ export default createRouter((router) => {
 								socialAccount.audienceCountryOtherPercentage,
 						},
 					],
+					topPerformingBrand: topBrandName,
 				})
 			} catch (error) {
 				console.error(
