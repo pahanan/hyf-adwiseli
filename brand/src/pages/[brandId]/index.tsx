@@ -22,7 +22,7 @@ function Dashboard() {
 			await getCampaigns({ brandId: brand?.id as string }),
 	})
 	return (
-		<Layout active="dashboard" title="My campaigns">
+		<Layout active="сampaigns" title="My campaigns">
 			<div className="flex flex-col gap-3.5">
 				<div className="w-full">
 					{!isLoading && data && data.length == 0 ? (
