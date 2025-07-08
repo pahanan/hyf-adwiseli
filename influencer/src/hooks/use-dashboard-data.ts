@@ -21,6 +21,8 @@ const useDashboardData = (influencerId: string) => {
 
 	useEffect(() => {
 		const loadData = async () => {
+			// Reset error state from the first render
+			setError('')
 			try {
 				const data = await fetchInfluencerData(influencerId)
 
