@@ -1,17 +1,15 @@
-import { useRouter } from "next/router";
-import Layout from "@/components/layout";
-function InfluencerDashboard(){
-const router= useRouter()
-const { brandId}= router.query
+import { useRouter } from 'next/router'
+import Layout from '@/components/layout'
+import DashboardContainer from '@/components/organisms/Dashboard/DashboardContainer'
 
-return(
-  <Layout>
-    <div>
+function InfluencerDashboard() {
+	const router = useRouter()
+	const { brandId } = router.query
 
-    <p style={{textAlign:"center", marginTop:"40px"}}>Welcome to Influencer Dashboard </p>
-    </div>
-  </Layout>
-  
-)
+	return (
+		<Layout>
+			<DashboardContainer />
+		</Layout>
+	)
 }
 export default InfluencerDashboard
