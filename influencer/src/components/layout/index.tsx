@@ -52,7 +52,7 @@ function getSidebarCategories(user: any) {
 					label: 'Dashboard',
 					icon: '/images/icons/campaign.svg',
 					clickedIcon: '/images/icons/clicked/campaign.svg',
-					link: '/',
+					link: '/dashboard',
 				},
 			],
 		},

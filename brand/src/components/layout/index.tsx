@@ -44,11 +44,18 @@ export const sidebarCategories: SidebarCategory[] = [
 		),
 		subLinks: [
 			{
-				id: 'dashboard',
+				id: 'сampaigns',
 				label: 'Campaigns',
 				icon: '/images/icons/campaign.svg',
 				clickedIcon: '/images/icons/clicked/campaign.svg',
 				link: '/',
+			},
+			{
+				id: 'dashboard',
+				label: 'Dashboard',
+				icon: '/images/icons/campaign.svg',
+				clickedIcon: '/images/icons/clicked/campaign.svg',
+				link: '/dashboard',
 			},
 			{
 				id: 'find-influencers',
