@@ -22,12 +22,11 @@ const useDashboardData = (influencerId: string) => {
 	useEffect(() => {
 		// Wait until influencerId is available before calling the fetch to avoid calling the API with an invalid ID
 		if (!influencerId) {
-			setLoading(true)
+			setLoading(false)
 			return
 		}
 
 		const loadData = async () => {
-			setLoading(true)
 			try {
 				const data = await fetchInfluencerData(influencerId)
 
