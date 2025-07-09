@@ -28,8 +28,6 @@ const useDashboardData = (influencerId: string) => {
 
 		const loadData = async () => {
 			setLoading(true)
-			// Reset error state from the first render
-			setError('')
 			try {
 				const data = await fetchInfluencerData(influencerId)
 
