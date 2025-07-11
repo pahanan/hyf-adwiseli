@@ -255,8 +255,17 @@ hyf-adwiseli/
 
 ### 🙋‍♀️ Seyedeh Najmeh Ghasemi
 
--   👩‍🏫 **Dependency Manager**
+-   👩‍🏫 **Dependency Manager** - Managed project dependencies and ensured consistent imports and integrations across the app.
 -   👩‍💻 **Frontend Developer**
+    -   Developed the `DashboardContainer` component
+    -   Imported shared logic and UI components such as:
+        `useUser` custom hook,
+        `useDashboardData` custom hook,
+        `Loading` component for loading states,
+        `DashboardCard` for rendering individual statistics cards
+    -   Implemented conditional UI logic for loading and error states
+    -   Structured layout with responsive design (using Tailwind CSS grid and flex utilities)
+    -   Integrated fetched dashboard data into dynamic grid of cards\*\*
 
 ### 🙋‍♀️ Seyedeh Parisa Mousaviamiri
 
