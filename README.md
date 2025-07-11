@@ -4,8 +4,8 @@
 
 A modern web platform that provides **real-time analytics** for **influencers** and **brands** to help monitor performance, engagement, and audience insights.
 
-![Dashboard Influencer Figma](https://www.figma.com/design/XpadL1FGUrjZOXCLn9X74W/Adwiseli_dashboard_influencer?node-id=0-1&t=wUwZEFVIBeSAyRRX-0)  
-![Dashboard Brand Figma](https://www.figma.com/design/98LkP6Aj1MjKmSEdWGAPTS/Adwiseli_dashboard?node-id=0-1&p=f&m=draw)
+[Dashboard Influencer Figma](https://www.figma.com/design/XpadL1FGUrjZOXCLn9X74W/Adwiseli_dashboard_influencer?node-id=0-1&t=wUwZEFVIBeSAyRRX-0)  
+[Dashboard Brand Figma](https://www.figma.com/design/98LkP6Aj1MjKmSEdWGAPTS/Adwiseli_dashboard?node-id=0-1&p=f&m=draw)
 
 ---
 
