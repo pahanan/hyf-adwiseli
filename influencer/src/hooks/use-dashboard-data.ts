@@ -4,7 +4,7 @@ import fetchInfluencerData from '../queries/influencer/fetchInfluencerData'
 //Defines the shape of a dashboard card
 interface DashboardCardData {
 	label: string
-	value: number | string
+	value: number | string | URL
 	extraInfo?: string
 }
 
@@ -44,15 +44,30 @@ const useDashboardData = (influencerId: string) => {
 				const topCountry = data.audienceCountry[0]?.country ?? 'Unknown'
 
 				setCards([
-					{ label: 'Views', value: data.views },
-					{ label: 'Likes', value: data.likes },
-					{ label: 'Comments', value: data.comments },
-					{ label: 'Shares', value: data.shares },
-					{ label: 'Followers', value: data.followers },
+					{
+						label: 'Views',
+						value: data.views,
+						extraInfo: 'Up 10% since the last campaign',
+					},
+					{
+						label: 'Likes',
+						value: data.likes,
+						extraInfo: 'Up 15% since the last campaign',
+					},
+					{
+						label: 'Comments',
+						value: data.comments,
+						extraInfo: 'Up 7.5% since the last campaign',
+					},
+					{
+						label: 'Shares',
+						value: data.shares,
+						extraInfo: 'Up 22% since the last campaign',
+					},
 					{
 						label: 'Engagement rate',
 						value: `${data.engagementRate}%`,
-						extraInfo: 'Up 7.5% since last month',
+						extraInfo: 'Up 2.5% since last month',
 					},
 					{
 						label: 'Audience (age, gender, country)',
@@ -63,6 +78,14 @@ const useDashboardData = (influencerId: string) => {
 					{
 						label: 'Top performing campaign',
 						value: data.topPerformingBrand || 'N/A',
+					},
+					{
+						label: 'Total earnings (DKK)',
+						value: '1545',
+					},
+					{
+						label: 'Performance graph',
+						value: '../../public/images/dashboard/performance_graph.png',
 					},
 				])
 			} catch (err) {
