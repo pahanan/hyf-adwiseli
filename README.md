@@ -242,8 +242,11 @@ hyf-adwiseli/
 
 ### 🙋‍♀️ Jianxin Zhao
 
--   👩‍🏫 **Communication Manager**
+-   👩‍🏫 **Communication Manager** - Acted as primary contact point between team and client, coordinating feedback, requirements, and timeline alignment
 -   👩‍💻 **Frontend Developer**
+    -   Developed backend API route to fetch influencer performance data (views, likes, comments, shares, followers, engagement rate)
+    -   Structured JSON response to support frontend dashboard visualization
+    -   Ensured accurate data transformation and validation for consistent UI presentation
 
 ### 🙋‍♂️ Andrii Khandohii
 
