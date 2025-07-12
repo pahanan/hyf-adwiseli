@@ -237,8 +237,12 @@ hyf-adwiseli/
 
 ### 🙋‍♀️ Güzide Güzelbey Esengün
 
--   👩‍🏫 **Design Leader**
+-   👩‍🏫 **Design Leader** - Ensured consistent implementation of the Figma design system across both applications and conducted design reviews to maintain visual accuracy, UI alignment, and quality standards.
 -   👩‍💻 **Frontend Developer**
+    -   Developed useDashboardData hooks for both brand and influencer apps, converting API responses into structured, dynamic card data for dashboards.
+    -   Implemented logic to extract audience insights, campaign stats, and engagement metrics.
+    -   Ensured data was returned in a consistent format to support reusable dashboard components across both apps.
+    -   Designed and established the front-end folder structure to support clean integration into the existing project architecture.
 
 ### 🙋‍♀️ Jianxin Zhao
 
@@ -274,8 +278,12 @@ hyf-adwiseli/
 
 ### 🙋‍♂️ Hossin Saadatpour
 
--   👨‍🏫 **Testing Lead (QA)**
+-   👨‍🏫 **Testing Lead (QA)** - Checked different parts of the project to find bugs or UI issues, helped organize basic testing before final delivery
 -   👨‍💻 **Frontend Developer**
+    -   Built a dashboard page for both influencers and brands
+    -   Used a reusable layout component that had already been created earlier in the project
+    -   Added UI elements like Card, Container, and a Dashboard Button
+    -   Worked with other team members to keep the design and user experience consistent
 
 ### 🙋‍♂️ Ayman B.
 
