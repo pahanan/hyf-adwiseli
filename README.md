@@ -273,8 +273,12 @@ hyf-adwiseli/
 
 ### 🙋‍♀️ Seyedeh Parisa Mousaviamiri
 
--   👩‍🏫 **Git Specialist**
--   👩‍💻 **Frontend Developer**
+-   👩‍🏫 **Git Specialist** - Ensured seamless version control across teams by designing and maintaining Git workflows, including code reviews, and merge pipelines. Collaborated closely with developers to manage release cycles and resolve conflicts effectively.
+-   👩‍💻 **Technical Contribution**
+    -   Integrated user and dashboard data hooks
+    -   Managed loading and error states with custom UI components
+    -   Built a responsive dashboard layout displaying statistics with fallback handling for network issues and loading states.
+    -   Maintained clean Git history through feature branches and pull requests, ensuring well-documented commits and smooth deployment integration.
 
 ### 🙋‍♂️ Hossein Saadatpour
 
