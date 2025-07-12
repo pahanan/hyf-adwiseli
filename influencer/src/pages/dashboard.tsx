@@ -8,7 +8,11 @@ function InfluencerDashboard() {
 
 	return (
 		<Layout>
-			<DashboardContainer />
+			<div>
+				<p style={{ textAlign: 'center', marginTop: '40px' }}>
+					Welcome to Influencer Dashboard{' '}
+				</p>
+			</div>
 		</Layout>
 	)
 }

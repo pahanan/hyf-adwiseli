@@ -20,6 +20,12 @@ const useDashboardData = (influencerId: string) => {
 	const [error, setError] = useState<string | null>(null)
 
 	useEffect(() => {
+		// Wait until influencerId is available before calling the fetch to avoid calling the API with an invalid ID
+		if (!influencerId) {
+			setLoading(false)
+			return
+		}
+
 		const loadData = async () => {
 			try {
 				const data = await fetchInfluencerData(influencerId)
