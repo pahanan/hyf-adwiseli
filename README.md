@@ -289,3 +289,11 @@ hyf-adwiseli/
 
 -   👨‍🏫 **Deployment Specialist**
 -   👨‍💻 **Frontend Developer**
+    -   Implemented the `fetchBrandData` function to retrieve and prepare all necessary data for the brand performance dashboard.
+    -   Structured the data using TypeScript interfaces (`BrandDashboardData` and `BrandCampaign`) to ensure clarity and type safety.
+    -   The function returns:
+        -   Brand details (ID, name, followers, ROI)
+        -   A list of campaigns with creator count, engagement rate, and audience insights
+        -   Audience demographics by gender and country
+        -   Key engagement metrics (views, likes, comments, shares)
+    -   Default values are applied to prevent any crashes due to missing backend data, ensuring a stable and reliable frontend experience.
