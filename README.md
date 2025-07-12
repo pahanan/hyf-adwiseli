@@ -276,7 +276,7 @@ hyf-adwiseli/
 -   👩‍🏫 **Git Specialist**
 -   👩‍💻 **Frontend Developer**
 
-### 🙋‍♂️ Hossin Saadatpour
+### 🙋‍♂️ Hossein Saadatpour
 
 -   👨‍🏫 **Testing Lead (QA)** - Checked different parts of the project to find bugs or UI issues, helped organize basic testing before final delivery
 -   👨‍💻 **Frontend Developer**
