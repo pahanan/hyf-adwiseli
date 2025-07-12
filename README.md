@@ -254,8 +254,12 @@ hyf-adwiseli/
 
 ### 🙋‍♂️ Andrii Khandohii
 
--   👨‍🏫 **Deployment Specialist**
+-   👨‍🏫 **Deployment Specialist** - Ensured stable deployment processes across the project by managing build integrity and deployment environments. Assisted in resolving integration-related issues and supported the team in maintaining a smooth development-to-deployment workflow without interruptions.
 -   👨‍💻 **Frontend Developer**
+    -   Developed the DashboardCard component — a responsive statistics card displaying key metrics in a unified format. Focused on its design by fine-tuning paddings, text alignment, and visual hierarchy to match the Figma design system.
+    -   Updated the routing logic to correctly render the Dashboard page with dynamic data loading and ensured seamless integration into the existing navigation structure.
+    -   Also implemented a custom button component for dashboard actions or navigation, following the project's UI/UX standards.
+    -   Worked closely with useDashboardData and DashboardContainer components to ensure consistent data flow and clean integration of logic and visual components across the frontend.
 
 ### 🙋‍♀️ Seyedeh Najmeh Ghasemi
 
