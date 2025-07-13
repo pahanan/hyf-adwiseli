@@ -1,78 +1,104 @@
 import { useState, useEffect } from 'react'
+import fetchInfluencerData from '../queries/influencer/fetchInfluencerData'
 
-// Тип данных для карточки
+//Defines the shape of a dashboard card
 export interface DashboardCardData {
-  label: string
-  value: number | string | URL
-  extraInfo?: string
+	label: string
+	value: number | string | URL
+	extraInfo?: string
 }
 
-// Хук для загрузки мок-данных
+// Format function to make the first letter Uppercase
+function formatString(str: string) {
+	str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+// Custom hook to load and structure dashboard data for influencer users
 const useDashboardData = (influencerId: string) => {
-  const [cards, setCards] = useState<DashboardCardData[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+	const [cards, setCards] = useState<DashboardCardData[]>([])
+	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    const loadMockData = async () => {
-      try {
-        // Задержка как будто идёт загрузка с API
-        await new Promise(resolve => setTimeout(resolve, 500))
+	useEffect(() => {
+		// Wait until influencerId is available before calling the fetch to avoid calling the API with an invalid ID
+		if (!influencerId) {
+			setLoading(false)
+			return
+		}
 
-        setCards([
-          {
-            label: 'Views',
-            value: '123.452',
-            extraInfo: 'Up 10% since the last campaign',
-          },
-          {
-            label: 'Likes',
-            value: '21.569',
-            extraInfo: 'Up 15% since the last campaign',
-          },
-          {
-            label: 'Comments',
-            value: '1412',
-            extraInfo: 'Up 7.5% since the last campaign',
-          },
-          {
-            label: 'Shares',
-            value: '578',
-            extraInfo: 'Up 22% since the last campaign',
-          },
-          {
-            label: 'Engagement rate',
-            value: '4,97 %',
-            extraInfo: 'Up 2.5% since the last campaign',
-          },
-          {
-            label: 'Audience (age, gender, country)',
-            value: '14–15, Female, Swedish',
-          },
-          {
-            label: 'Top performing campaign',
-            value: 'Jack & Jones',
-          },
-          {
-            label: 'Total earnings (DKK)',
-            value: '1545',
-          },
-          {
-            label: 'Performance Graph',
-            value: '/images/dashboard/performance_graph.png',
-          },
-        ])
-      } catch (err) {
-        setError('Failed to load mock data')
-      } finally {
-        setLoading(false)
-      }
-    }
+		const loadData = async () => {
+			try {
+				const data = await fetchInfluencerData(influencerId)
 
-    loadMockData()
-  }, [influencerId])
+				// Format the fetched data into a card-friendly array
+				const topGender = Object.entries(data.audienceGender).reduce(
+					(prev, curr) => (curr[1] > prev[1] ? curr : prev),
+					Object.entries(data.audienceGender)[0]
+				)[0]
 
-  return { cards, loading, error }
+				const topAge = Object.entries(data.audienceAge).reduce(
+					(prev, curr) => (curr[1] > prev[1] ? curr : prev),
+					Object.entries(data.audienceAge)[0]
+				)[0]
+
+				const topCountry = data.audienceCountry[0]?.country ?? 'Unknown'
+
+				setCards([
+					{
+						label: 'Views',
+						value: data.views,
+						extraInfo: 'Up 10% since the last campaign',
+					},
+					{
+						label: 'Likes',
+						value: data.likes,
+						extraInfo: 'Up 15% since the last campaign',
+					},
+					{
+						label: 'Comments',
+						value: data.comments,
+						extraInfo: 'Up 7.5% since the last campaign',
+					},
+					{
+						label: 'Shares',
+						value: data.shares,
+						extraInfo: 'Up 22% since the last campaign',
+					},
+					{
+						label: 'Engagement rate',
+						value: `${data.engagementRate}%`,
+						extraInfo: 'Up 2.5% since last month',
+					},
+					{
+						label: 'Audience (age, gender, country)',
+						value: `${topAge}, ${formatString(
+							topGender
+						)}, ${topCountry}`,
+					},
+					{
+						label: 'Top performing campaign',
+						value: data.topPerformingBrand || 'N/A',
+					},
+					{
+						label: 'Total earnings (DKK)',
+						value: '1545',
+					},
+					{
+						label: 'Performance graph',
+						value: '../../public/images/dashboard/performance_graph.png',
+					},
+				])
+			} catch (err) {
+				setError('Failed to load influencer data')
+			} finally {
+				setLoading(false)
+			}
+		}
+		loadData()
+	}, [influencerId])
+
+	// Return card data, loading state and error
+	return { cards, loading, error }
 }
 
 export default useDashboardData
