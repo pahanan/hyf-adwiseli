@@ -1,10 +1,5 @@
 import React from 'react'
-
-type DashboardCardData = {
-  label: string
-  value: string | number
-  extraInfo?: string
-}
+import { DashboardCardData } from '@/hooks/use-dashboard-data'
 
 type Props = {
   card: DashboardCardData

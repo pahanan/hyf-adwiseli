@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import fetchBrandData from '../queries/brand/fetchBrandData'
 
 // Defines the shape of a dashboard card
-interface DashboardCardData {
+export interface DashboardCardData {
 	label: string
 	value: number | string
 	extraInfo?: string
