@@ -8,7 +8,7 @@ function DashboardBrandPage() {
 
 	return (
 		<Layout active="dashboard" title="Dashboard">
-			<DashboardContainer></DashboardContainer>
+			<DashboardContainer/>
 		</Layout>
 	)
 }
