@@ -86,7 +86,7 @@ const useDashboardData = (influencerId: string) => {
 					},
 					{
 						label: 'Performance graph',
-						value: '../../public/images/dashboard/performance_graph.png',
+						value: '/images/dashboard/performance_graph.png',
 					},
 				])
 			} catch (err) {
