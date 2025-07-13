@@ -1,10 +1,5 @@
 import React from 'react'
-
-type DashboardCardData = {
-  label: string
-  value: string | number
-  extraInfo?: string
-}
+import { DashboardCardData } from '@/hooks/use-dashboard-data'
 
 type Props = {
   card: DashboardCardData
@@ -12,13 +7,26 @@ type Props = {
 
 const DashboardCard = ({ card }: Props) => {
   return (
-    <div className="bg-white rounded-xl p-5 text-center shadow-sm border border-gray-200">
-      <p className="text-sm font-medium text-gray-600">{card.label}</p>
-      <p className="text-2xl font-semibold text-orange-600 mt-2">{card.value}</p>
-      {card.extraInfo && (
-        <p className="text-xs text-gray-500 mt-2">{card.extraInfo}</p>
-      )}
-    </div>
+   <div className="bg-#FFFDFD rounded-xl p-5 text-center border border-gray-200 w-[400px] h-[150px] flex flex-col justify-between">
+  <p className="text-[14px] font-semibold">{card.label}</p>
+
+  <div className={`flex-1 flex items-center justify-center ${Array.isArray(card.value) ? 'mt-3' : 'mt-0'}`}>
+    {Array.isArray(card.value) ? (
+      <div className="text-orange-600 font-semibold space-y-1">
+        {card.value.map((line, i) => (
+          <p key={i} className="text-xl leading-tight">{line}</p>
+        ))}
+      </div>
+    ) : (
+      <p className="text-2xl font-semibold text-orange-600">{card.value}</p>
+    )}
+  </div>
+
+  {card.extraInfo && (
+    <p className="text-[12px] text-black font-semibold">{card.extraInfo}</p>
+  )}
+</div>
+
   )
 }
 
