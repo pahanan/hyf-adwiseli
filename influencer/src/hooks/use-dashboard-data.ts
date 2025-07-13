@@ -10,7 +10,7 @@ export interface DashboardCardData {
 
 // Format function to make the first letter Uppercase
 function formatString(str: string) {
-	str.charAt(0).toUpperCase() + str.slice(1)
+	return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
 // Custom hook to load and structure dashboard data for influencer users
@@ -100,7 +100,7 @@ const useDashboardData = (influencerId: string) => {
 	}, [influencerId])
 
 	// Return card data, loading state and error
-	return { cards, loading, error }
+	return { cards, loading, error, isError }
 }
 
 export default useDashboardData
