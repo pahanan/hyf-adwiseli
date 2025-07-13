@@ -1,10 +1,5 @@
 import React from 'react'
-
-type DashboardCardData = {
-  label: string
-  value: string | number
-  extraInfo?: string
-}
+import { DashboardCardData } from '../../../hooks/use-dashboard-data'
 
 type Props = {
   card: DashboardCardData
@@ -49,7 +44,7 @@ const DashboardCard = ({ card }: Props) => {
 
         {isSimpleText && (
           <p className="text-2xl font-bold text-orange-600">
-            {card.value}
+            {card.value.toString()}
           </p>
         )}
       </div>
