@@ -1,5 +1,6 @@
 import Layout from '@/components/layout'
 import { useRouter } from 'next/router'
+import DashboardContainer from '@/components/organisms/Dashboard/DashboardContainer'
 
 function DashboardBrandPage() {
 	const router = useRouter()
@@ -7,9 +8,7 @@ function DashboardBrandPage() {
 
 	return (
 		<Layout active="dashboard" title="Dashboard">
-			<h1 style={{ textAlign: 'center', marginTop: '100px' }}>
-				Welcome top the Dashboard page: your brand Id is :{brandId}
-			</h1>
+			<DashboardContainer></DashboardContainer>
 		</Layout>
 	)
 }

@@ -1,41 +1,53 @@
-import React from 'react';
-import { DashboardCardData } from '@/hooks/use-dashboard-data';
+import React from 'react'
+import { DashboardCardData } from '@/hooks/use-dashboard-data'
 
 type Props = {
-  card: DashboardCardData;
-};
+  card: DashboardCardData
+}
 
 const isImagePath = (val: string) =>
-  val.match(/\.(jpeg|jpg|png|gif|webp|svg)$/i);
+  val.match(/\.(jpeg|jpg|png|gif|webp|svg)$/i)
 
 const DashboardCard = ({ card }: Props) => {
   return (
-    <div className="bg-#FFFDFD rounded-xl p-5 text-center border border-gray-200 w-[400px] h-[150px] flex flex-col justify-between">
-      <p className="text-[14px] font-semibold">{card.label}</p>
+    <div className="bg-white rounded-xl p-6 text-center border border-gray-200 w-[400px] h-[200px] flex flex-col justify-between">
+      <p className="text-[15px] font-semibold">{card.label}</p>
 
-      <div className={`flex-1 flex items-center justify-center ${Array.isArray(card.value) ? 'mt-3' : 'mt-0'}`}>
+      <div
+        className={`flex-1 flex items-center justify-center ${
+          Array.isArray(card.value) ? 'mt-4' : 'mt-1'
+        }`}
+      >
         {typeof card.value === 'string' && isImagePath(card.value) ? (
           <img
             src={card.value}
             alt={card.label}
-            className="h-[60px] object-contain"
+            className="h-[70px] object-contain"
           />
         ) : Array.isArray(card.value) ? (
           <div className="text-orange-600 font-semibold space-y-1">
             {card.value.map((line, i) => (
-              <p key={i} className="text-xl leading-tight">{line}</p>
+              <p key={i} className="text-xl leading-tight">
+                {line}
+              </p>
             ))}
           </div>
         ) : (
-          <p className="text-2xl font-semibold text-orange-600">{card.value.toString()}</p>
+          <p className="text-[26px] font-semibold text-orange-600">
+            {typeof card.value === 'object' && card.value instanceof URL
+              ? card.value.toString()
+              : card.value}
+          </p>
         )}
       </div>
 
       {card.extraInfo && (
-        <p className="text-[12px] text-black font-semibold">{card.extraInfo}</p>
+        <p className="text-[12px] text-black font-semibold mt-2">
+          {card.extraInfo}
+        </p>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default DashboardCard;
+export default DashboardCard
