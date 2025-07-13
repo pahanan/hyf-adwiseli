@@ -16,13 +16,14 @@ function formatString(str: string) {
 // Custom hook to load and structure dashboard data for influencer users
 const useDashboardData = (influencerId: string) => {
 	const [cards, setCards] = useState<DashboardCardData[]>([])
-	const [loading, setLoading] = useState(true)
+	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
+	const [isError, setIsError] = useState(false)
 
 	useEffect(() => {
 		// Wait until influencerId is available before calling the fetch to avoid calling the API with an invalid ID
 		if (!influencerId) {
-			setLoading(false)
+			setLoading(true)
 			return
 		}
 
@@ -89,6 +90,7 @@ const useDashboardData = (influencerId: string) => {
 					},
 				])
 			} catch (err) {
+				setIsError(true)
 				setError('Failed to load influencer data')
 			} finally {
 				setLoading(false)
