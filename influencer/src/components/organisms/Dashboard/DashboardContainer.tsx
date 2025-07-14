@@ -10,10 +10,10 @@ function DashboardContainer() {
     const visibleCards = cards?.slice(0, 9);
 
   return (
-    <div className="flex min-h-screen bg-white">
-        <main className="flex-1 px-4 sm:px-6 md:px-8 py-6">
-         <div className="bg-[#E9E9E9] rounded-2xl p-6 sm:p-8">
-             <h1 className="text-base sm:text-lg font-semibold mb-6">Statistics Overview</h1>
+    <div className="flex flex-col min-h-screen bg-white">
+      <main className="flex-1 px-4 py-6 sm:px-6 lg:px-6">
+        <div className="bg-[#E9E9E9] rounded-[20px] p-6 sm:p-8 mx-auto max-h-[80vh] overflow-y-auto">
+             <h1 className="text-lg sm:text-xl font-semibold mb-6">Statistics Overview</h1>
 
               {/* ✅ Loading */}
               {loading && (
@@ -32,7 +32,7 @@ function DashboardContainer() {
                {/* ✅ Cards */}
 
                {visibleCards && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-center max-w-6xl mx-auto">
               {visibleCards.map((card, index) => (
                 <DashboardCard key={index} card={card} />
               ))}
