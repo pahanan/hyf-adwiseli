@@ -3,7 +3,7 @@ import DashboardContainer from "@/components/organisms/Dashboard/DashboardContai
 
 function InfluencerDashboard(){
 return(
-  <Layout active="dashboard" title="Dashboard">
+  <Layout active="dashboard" >
     <DashboardContainer /> 
   </Layout>
 )
