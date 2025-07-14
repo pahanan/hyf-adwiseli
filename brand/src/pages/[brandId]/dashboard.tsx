@@ -7,7 +7,7 @@ function DashboardBrandPage() {
 	const { brandId } = router.query
 
 	return (
-		<Layout active="dashboard" title="Dashboard">
+		<Layout active="dashboard">
 			<DashboardContainer/>
 		</Layout>
 	)
