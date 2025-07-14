@@ -14,7 +14,7 @@ function DashboardContainer() {
   return (
     <div className="flex min-h-screen bg-white">
         <main className="flex-1 px-4 sm:px-6 md:px-8 py-6">
-         <div className="bg-[#E9E9E9] rounded-2xl p-6 sm:p-8 shadow-md">
+         <div className="bg-[#E9E9E9] rounded-2xl p-6 sm:p-8">
              <h1 className="text-base sm:text-lg font-semibold mb-6">Statistics Overview</h1>
 
               {/* ✅ Loading */}
