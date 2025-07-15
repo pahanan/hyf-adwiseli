@@ -55,11 +55,11 @@ This application supports brands and influencers in tracking content performance
 
 ### Influencer Dashboard
 
-![Influencer Dashboard](./img/influencer.png)
+![Influencer Dashboard](./img/influencer_screenshot.png)
 
 ### Brand Dashboard
 
-![Brand Dashboard](./img/brand.png)
+![Brand Dashboard](./img/brand_screenshot.png)
 
 ---
 
