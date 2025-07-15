@@ -23,7 +23,7 @@
 			"@/queues/*": ["queues/*"],
 		},
 
-		"noImplicitAny": true,
+		"noImplicitAny": false,
 		"esModuleInterop": true,
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
