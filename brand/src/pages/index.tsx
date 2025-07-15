@@ -27,8 +27,11 @@ function Home() {
 		}
 	}, [router, isLoading, brands])
 
-	if (!user || isLoading || (brands?.length || 0) > 0)
-		return <FullscreenLoading />
+	if (!user || isLoading)
+	return <FullscreenLoading />
+
+	if ((brands?.length || 0) === 0)
+	return <SetupBrand />
 
 	return <SetupBrand />
 }
