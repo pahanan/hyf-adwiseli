@@ -32,6 +32,16 @@
 		"prisma": "^6.1.0",
 		"tsconfig-paths": "^4.2.0"
 	},
+	"_moduleAliases": {
+		"@": "dist",
+		"@/utils": "dist/utils",
+		"@/routes": "dist/routes",
+		"@/controllers": "dist/controllers",
+		"@/constants": "dist/constants",
+		"@/middlewares": "dist/middlewares",
+		"@/helpers": "dist/helpers",
+		"@/queues": "dist/queues"
+	},
 	"dependencies": {
 		"@aws-sdk/client-s3": "^3.279.0",
 		"@aws-sdk/s3-request-presigner": "^3.540.0",
@@ -77,6 +87,7 @@
 		"jsonwebtoken": "^9.0.0",
 		"md5": "^2.3.0",
 		"memory-cache": "^0.2.0",
+		"module-alias": "^2.2.3",
 		"morgan": "^1.10.0",
 		"multer": "^1.4.5-lts.1",
 		"mysql2": "^3.10.0",

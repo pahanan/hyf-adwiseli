@@ -1,5 +1,7 @@
 import axios, { AxiosInstance } from 'axios'
 
+console.log('BaseURL', process.env.NEXT_PUBLIC_API_BASE_URL) 
+
 const http: AxiosInstance = axios.create({
 	baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}/brand`,
 	withCredentials: true,
