@@ -6,7 +6,7 @@ type CorsOptions = {
 export default function cors(options?: CorsOptions) {
   return (req: Request, res: Response, next: NextFunction) => {
     if (options?.restrictedOrigin) {
-      const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001']
+      const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', 'https://hyf-adwiseli-brand.vercel.app/', 'https://hyf-adwiseli-influencer.vercel.app/']
       const origin = req.headers.origin
       if (origin && allowedOrigins.includes(origin)) {
         res.header('Access-Control-Allow-Origin', origin)
